@@ -13,6 +13,10 @@ class TaksController {
     return query.docs.map((doc) => Task.fromMap(doc.data())).toList();
   }
 
+  Future<void> updateTask(Task task) async {
+    await db.collection('tasks').doc(task.id).update(task.toMap());
+  }
+
   Future<void> deleteTask(String id) async {
     await db.collection('tasks').doc(id).delete();
   }

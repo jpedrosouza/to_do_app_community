@@ -27,6 +27,8 @@ abstract class LoginPageStore with Store {
     this.pageContext = pageContext;
   }
 
+  /// Validate form and send informations to authenticate user.
+
   @action
   Future login() async {
     loading = true;
@@ -47,6 +49,8 @@ abstract class LoginPageStore with Store {
     loading = false;
   }
 
+  /// Navigate to a page.
+
   void navigateToPage(Widget widget) {
     Navigator.pushAndRemoveUntil(
       pageContext,
@@ -54,6 +58,8 @@ abstract class LoginPageStore with Store {
       (route) => false,
     );
   }
+
+  /// Show a scaffold message.
 
   void showScaffoldMessage(String message, Color backgroundColor) {
     TDAPCScaffoldMessage(pageContext, message, backgroundColor).show();

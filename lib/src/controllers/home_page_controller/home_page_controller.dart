@@ -17,9 +17,13 @@ abstract class HomePageStore with Store {
   @observable
   bool loading = true;
 
+  /// Init the controller.
+
   void init(BuildContext pageContext)  {
     this.pageContext = pageContext;
   }
+
+  /// Get the user data.
 
   @action
   Future getData() async {

@@ -15,7 +15,7 @@ class Task {
   static Task fromMap(Map<String, dynamic> map) {
     return Task(
       map['id'],
-      map['userId'],
+      map['user_id'],
       map['name'],
       map['frequency'],
       map['user'],

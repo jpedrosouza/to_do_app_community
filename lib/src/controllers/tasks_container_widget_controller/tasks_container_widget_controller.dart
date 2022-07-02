@@ -21,6 +21,8 @@ abstract class TasksContainerWidgetStore with Store {
   @observable
   List<Task> monthlyTasks = [];
 
+  /// Get the tasks for the current user.
+
   @action
   Future getTasks() async {
     userId = await AuthService().getUserId();
@@ -28,6 +30,8 @@ abstract class TasksContainerWidgetStore with Store {
 
     separateTasks();
   }
+
+  /// Separate the tasks into daily, weekly and monthly tasks.
 
   @action
   void separateTasks() {

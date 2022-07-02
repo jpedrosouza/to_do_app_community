@@ -34,8 +34,5 @@ abstract class TasksContainerWidgetStore with Store {
     dailyTasks = tasks.where((task) => task.frequency == 'daily').toList();
     weeklyTasks = tasks.where((task) => task.frequency == 'weekly').toList();
     monthlyTasks = tasks.where((task) => task.frequency == 'monthly').toList();
-
-    print(tasks.length);
-    print(tasks[0].toMap());
   }
 }

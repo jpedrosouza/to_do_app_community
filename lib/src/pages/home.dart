@@ -92,6 +92,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget tasks() {
-    return TasksContainer([]);
+    return const TasksContainer([]);
   }
 }

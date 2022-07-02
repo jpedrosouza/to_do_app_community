@@ -12,7 +12,7 @@ class UsersController {
     });
   }
 
-  Future<Map<String, dynamic>> getUser(String id) async {
+  Future<User> getUser(String id) async {
     final doc = await db.collection('users').doc(id).get();
     return User.fromMap(doc.data()!);
   }

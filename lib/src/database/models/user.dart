@@ -8,12 +8,8 @@ class User {
   @override
   String toString() => 'User(id: $id, email: $email, fullName: $fullName)';
 
-  static Map<String, dynamic> fromMap(Map<String, dynamic> map) {
-    return {
-      'id': map['id'],
-      'email': map['email'],
-      'full_name': map['full_name'],
-    };
+  static User fromMap(Map<String, dynamic> map) {
+    return User(map['id'], map['email'], map['full_name']);
   }
 
   Map<String, dynamic> toMap() {

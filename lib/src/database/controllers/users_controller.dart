@@ -33,4 +33,11 @@ class UsersController {
   Future<void> deleteUser(String email) async {
     await db.collection('users').doc(email).delete();
   }
+
+  /// Get DocumentReference of the user from the database.
+
+  Future<DocumentReference> getUserDocumentReference(String email) async {
+    final doc = await db.collection('users').doc(email).get();
+    return doc.reference;
+  }
 }

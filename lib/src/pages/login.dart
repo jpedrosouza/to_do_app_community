@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:to_do_app_community/src/controllers/login_page_controller/login_page_controller.dart';
 import 'package:to_do_app_community/src/pages/register.dart';
 import 'package:to_do_app_community/src/widgets/tdapc_button.dart';
@@ -24,30 +25,34 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  'Bem Vindo!',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
+      body: Observer(
+        builder: (_) => !controller.loading
+            ? SingleChildScrollView(
+                child: SafeArea(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text(
+                          'Bem Vindo!',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 60),
+                          child: form(),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 60),
-                  child: form(),
-                ),
-              ],
-            ),
-          ),
-        ),
+              )
+            : const Center(child: CircularProgressIndicator()),
       ),
     );
   }

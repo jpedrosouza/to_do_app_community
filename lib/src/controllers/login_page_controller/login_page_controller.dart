@@ -25,6 +25,24 @@ abstract class LoginPageStore with Store {
 
   void init(BuildContext pageContext) {
     this.pageContext = pageContext;
+
+    checkIfLoggedIn();
+  }
+
+  /// Check if user is logged in, if so, redirect to home page
+  Future checkIfLoggedIn() async {
+    loading = true;
+
+    if (await AuthService().checkIfLoggedIn()) {
+      Navigator.pushReplacement(
+        pageContext,
+        MaterialPageRoute(
+          builder: (context) => const HomePage(),
+        ),
+      );
+    }
+
+    loading = false;
   }
 
   /// Validate form and send informations to authenticate user.

@@ -28,6 +28,12 @@ class AuthService {
     return firebaseAuth.currentUser!.uid;
   }
 
+  /// Get authenticated user email.
+  
+  Future<String> getUserEmail() async {
+    return firebaseAuth.currentUser!.email!;
+  }
+
   /// Sign out user.
 
   Future<void> signOut() async {

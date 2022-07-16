@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:to_do_app_community/src/controllers/tasks_container_widget_controller/tasks_container_widget_controller.dart';
-import 'package:to_do_app_community/src/database/models/task.dart';
 import 'package:to_do_app_community/src/widgets/task_item.dart';
 
 class TasksContainer extends StatefulWidget {
-  final List<Task> tasks;
-
-  const TasksContainer(this.tasks, {Key? key}) : super(key: key);
+  const TasksContainer({Key? key}) : super(key: key);
 
   @override
   State<TasksContainer> createState() => _TasksContainerState();
@@ -25,16 +22,17 @@ class _TasksContainerState extends State<TasksContainer> {
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (_) => Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          dailyTasks(),
-          Padding(
-              padding: const EdgeInsets.only(top: 30), child: weeklyTasks()),
-          Padding(
-              padding: const EdgeInsets.only(top: 30), child: monthlyTasks()),
-        ],
+      builder: (_) => Container(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(padding: const EdgeInsets.only(top: 0), child: dailyTasks()),
+            Padding(padding: const EdgeInsets.only(top: 30), child: weeklyTasks()),
+            Padding(padding: const EdgeInsets.only(top: 30), child: monthlyTasks()),
+          ],
+        ),
       ),
     );
   }

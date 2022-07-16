@@ -30,6 +30,13 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         scaffoldBackgroundColor: const Color(0XFFE5E5E5),
+        progressIndicatorTheme: const ProgressIndicatorThemeData(
+          color: Color(0XFF6F3882),
+        ),
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          backgroundColor: Color(0XFF6F3882),
+        ),
         primarySwatch: Colors.blue,
       ),
       home: const LoginPage(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:to_do_app_community/src/controllers/home_page_controller/home_page_controller.dart';
+import 'package:to_do_app_community/src/pages/new_task.dart';
 import 'package:to_do_app_community/src/widgets/tasks_container.dart';
 import 'package:to_do_app_community/src/widgets/tdapc_button.dart';
 
@@ -82,7 +83,14 @@ class _HomePageState extends State<HomePage> {
             child: TDAPCButton(
               'Nova Tarefa',
               const Color(0XFFBD8ECD),
-              () {},
+              () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => NewTaskPage(() {
+                    controller.getData();
+                  })),
+                );
+              },
               width: MediaQuery.of(context).size.width * 0.7,
             ),
           )

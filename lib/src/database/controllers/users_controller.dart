@@ -36,8 +36,8 @@ class UsersController {
 
   /// Get DocumentReference of the user from the database.
 
-  Future<DocumentReference> getUserDocumentReference(String email) async {
-    final doc = await db.collection('users').doc(email).get();
+  Future<DocumentReference> getUserDocumentReference(String uuid) async {
+    final doc = await db.collection('users').doc(uuid).get();
     return doc.reference;
   }
 }

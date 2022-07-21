@@ -6,6 +6,7 @@ class TDAPCTextInput extends StatefulWidget {
   final TextEditingController? controller;
   final double? width;
   final TextInputType? textInputType;
+  final bool? centerTitle;
 
   const TDAPCTextInput(
     this.labelText,
@@ -13,6 +14,7 @@ class TDAPCTextInput extends StatefulWidget {
     this.controller,
     this.width,
     this.textInputType,
+    this.centerTitle,
     Key? key,
   }) : super(key: key);
 
@@ -25,23 +27,37 @@ class _TDAPCTextInputState extends State<TDAPCTextInput> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width ?? MediaQuery.of(context).size.width,
-      child: TextFormField(
-        controller: widget.controller,
-        validator: (value) => value!.isEmpty ? 'Campo obrigatório' : null,
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          label: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(widget.labelText),
+      child: Column(
+        children: [
+          Visibility(
+            visible: widget.centerTitle ?? false,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Text(widget.labelText),
+            ),
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(40),
-            borderSide: BorderSide.none,
+          TextFormField(
+            controller: widget.controller,
+            validator: (value) => value!.isEmpty ? 'Campo obrigatório' : null,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              label: Visibility(
+                visible: widget.centerTitle == null,
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(widget.labelText),
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(40),
+                borderSide: BorderSide.none,
+              ),
+            ),
+            obscureText: widget.obscureText,
+            keyboardType: widget.textInputType,
           ),
-        ),
-        obscureText: widget.obscureText,
-        keyboardType: widget.textInputType,
+        ],
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Task {
-  late final String? id;
+  late String? id;
   late final String userId;
   late final String name;
   late final String frequency;
